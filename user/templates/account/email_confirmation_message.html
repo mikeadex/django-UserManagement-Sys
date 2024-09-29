@@ -1,0 +1,5 @@
+{% load i18n %}
+<p>{% blocktrans %}Hello {{ user }},{% endblocktrans %}</p>
+<p>{% blocktrans %}Please click on the link below to verify your email address:{% endblocktrans %}</p>
+<p><a href="{{ activate_url }}">{{ activate_url }}</a></p>
+<p>{% blocktrans %}Thank you for using our service!{% endblocktrans %}</p>

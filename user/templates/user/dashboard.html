@@ -1,0 +1,27 @@
+<h1>Welcome to your dashboard, {{ profile.first_name }}!</h1>
+
+{% if profile.profile_picture %}
+    <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
+{% else %}
+    <img src="/static/images/default-profile-picture.jpg" alt="Default Profile Picture">
+{% endif %}
+
+<p><strong>Email:</strong> {{ profile.email }}</p>
+<p><strong>Phone Number:</strong> {{ profile.phone_number }}</p>
+<p><strong>Address:</strong> {{ profile.address }}</p>
+<p><strong>Role:</strong> {{ profile.get_role_display }}</p>
+<p><a href="{% url 'change_password' %}">Change Password</a></p>
+p><a href="{% url 'manage_preferences' %}">Manage Preferences</a></p>
+
+<a href="{% url 'edit_profile' %}">Edit Profile</a>
+
+{% if bookings %}
+    <h2>Your Bookings</h2>
+    <ul>
+        {% for booking in bookings %}
+            <li>{{ booking.service }} on {{ booking.booking_date }}</li>
+        {% empty %}
+            <li>No bookings found.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
